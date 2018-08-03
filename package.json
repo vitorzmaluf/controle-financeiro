@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/vitorzmaluf/controle-financeiro/issues"
   },
-  "homepage": "https://github.com/vitorzmaluf/controle-financeiro#readme"
+  "homepage": "https://github.com/vitorzmaluf/controle-financeiro#readme",
+  "dependencies": {
+    "mongoose": "^5.2.6"
+  }
 }
