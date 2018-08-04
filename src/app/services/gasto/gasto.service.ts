@@ -15,7 +15,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class GastoService {
-  apiUrl = 'http://localhost:3000/';
+  apiUrl = 'http://localhost:3000';
   gastoUrl = `${this.apiUrl}/api/gasto`;
 
   constructor(
@@ -25,8 +25,7 @@ export class GastoService {
   // create spending and return unique id
   postGasto(gasto: Gasto): Observable<Gasto> {
     return this.http.post<Gasto>(this.gastoUrl, gasto, httpOptions)
-      .pipe
-      (
+      .pipe(
         tap((result: Gasto) => console.log(`gasto adicionado, id: ${result.id}`)),
         catchError(this.errorHandler<Gasto>('postGasto'))
       );
@@ -55,20 +54,18 @@ export class GastoService {
   // update spending based on unique id
   putGasto(gasto: Gasto): Observable<any> {
     return this.http.put(this.gastoUrl, gasto, httpOptions)
-      .pipe
-      (
+      .pipe(
         tap(result => console.log(`gasto atualizado, id: ${gasto.id}`)),
         catchError(this.errorHandler<any>('putGasto'))
       );
   }
 
   // delete spending with given id
-  deleteGasto(id: number): Observable<any> {
+  deleteGasto(id: string): Observable<any> {
     const url = `${this.gastoUrl}/${id}`;
 
     return this.http.delete<Gasto>(url, httpOptions)
-      .pipe
-      (
+      .pipe(
         tap(result => console.log(`gasto deletado, id: ${id}`)),
         catchError(this.errorHandler<Gasto>('deleteGasto'))
       );
@@ -77,6 +74,8 @@ export class GastoService {
   private errorHandler<T>(method = 'method', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
+
+      console.log(`${method} failed: ${error.message}`);
 
       return of(result as T);
     };
