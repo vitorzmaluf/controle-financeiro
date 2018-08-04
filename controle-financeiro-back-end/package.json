@@ -1,0 +1,23 @@
+{
+  "name": "controle-financeiro",
+  "version": "1.0.0",
+  "description": "Controle financeiro utilizando NodeJS + Angular",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitorzmaluf/controle-financeiro.git"
+  },
+  "author": "Vitor Zamignani Maluf <vitorzamignanim@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitorzmaluf/controle-financeiro/issues"
+  },
+  "homepage": "https://github.com/vitorzmaluf/controle-financeiro#readme",
+  "dependencies": {
+    "http-status-codes": "^1.3.0",
+    "mongoose": "^5.2.6"
+  }
+}
