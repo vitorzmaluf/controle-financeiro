@@ -1,33 +1,40 @@
-const { Gastos } = require('../models/index');
+const { Gasto } = require('../models/index');
 const { mongoose } = require('../database/mongo');
 
 const parseFindOptions = (req) => {
     const { _id } = req.params;
     return {
-        where:{
-            id: id,
-        },
-    };
-},
+            _id
+        };
+};
 
 const get = (req) => {
-    return Gastos.findAll()
-        .then((result) => result);
+    return Gasto.find(function(err, result) {
+        if (err){
+            console.log('err');
+        }
+        else {
+            console.log('ok');
+        }
+    })
 };
+
 
 const getById = (req) => {
     const options = parseFindOptions(req);
-    return Gastos.findOne(options)
+    return Gasto.findOne(options)
         .then((result) => result);
 };
 
 const post = (req) => {
     const { body } = req;
-    return new Aluno ({
-        name: req.name,
-        price: req.price,
-        date: req.date,
+    const gasto = new Gasto ({
+        name: body.name,
+        price: body.price,
+        date: body.date,
     });
+    return Gasto.create(gasto)
+        .then(result => result)
 };
 
 const updateGasto = async function(gasto){

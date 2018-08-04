@@ -1,5 +1,5 @@
-const Gastos = require('./gastos');
+const Gasto = require('./gastos');
 
 module.exports = exports = {
-    Gastos
+    Gasto
 };

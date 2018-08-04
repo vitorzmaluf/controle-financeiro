@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/vitorzmaluf/controle-financeiro#readme",
   "dependencies": {
+    "http-status-codes": "^1.3.0",
     "mongoose": "^5.2.6"
   }
 }
