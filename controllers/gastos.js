@@ -19,11 +19,26 @@ const post = (req, res) => {
      .then((result) => {
          res.send(result)
      })
-     .catch((error) => res.status(500).send(error))
+}
+
+const put = (req, res) => {
+    return service.put(req)
+        .then((result) => {
+            res.send(result)
+        })
+}
+
+const exclude = (req, res) => {
+    return service.exclude(req)
+        .then((result) => {
+            res.send(result)
+        })
 }
 
 module.exports = {
     get,
     getById,
     post,
+    put,
+    exclude,
 }

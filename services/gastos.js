@@ -37,12 +37,30 @@ const post = (req) => {
         .then(result => result)
 };
 
-const updateGasto = async function(gasto){
-    Gastos.updateOne({_id: gasto.id}, gasto)
-}
+const put = (req) => {
+    const { body } = req;
+    const options = parseFindOptions(req);
+
+    const gasto = new Gasto ({
+        _id: body._id,
+        name: body.name,
+        price: body.price,
+        date: body.date,
+    })
+    return Gasto.updateOne({_id: gasto._id}, gasto)
+        .then(result => result)
+};
+
+const exclude = (req) => {
+    const options = parseFindOptions(req);
+    return Gasto.deleteOne(options)
+        .then((result) => result);
+};
 
 module.exports = {
     get,
     getById,
     post,
+    put,
+    exclude,
 }
